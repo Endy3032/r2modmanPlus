@@ -86,6 +86,12 @@ export default defineConfig((ctx) => {
                 }
             },
 
+            mac: {
+                publish: {
+                    provider: 'github'
+                }
+            },
+
             vitePlugins: [
             ]
         },
@@ -235,8 +241,20 @@ export default defineConfig((ctx) => {
                     ]
                 },
                 mac: {
+                    appId: 'com.ebkr.r2modman',
                     category: "games",
-                    icon: "src/assets/icon"
+                    icon: "src/assets/icon",
+                    identity: null,
+                    target: [
+                        {
+                            target: "dmg",
+                            arch: "x64"
+                        },
+                        {
+                            target: "dmg",
+                            arch: "arm64"
+                        },
+                    ]
                 }
             },
 

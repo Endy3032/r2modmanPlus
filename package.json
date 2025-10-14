@@ -17,6 +17,7 @@
     "publish": "quasar build --mode electron --publish always",
     "publish-win": "quasar build --mode electron -T win32 --publish always",
     "publish-linux": "quasar build --mode electron -T linux --publish always",
+    "publish-osx": "quasar build --mode electron -T mac --publish always",
     "test": "vitest run ./test/vitest"
   },
   "dependencies": {

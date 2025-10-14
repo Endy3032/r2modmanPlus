@@ -17,6 +17,9 @@ jobs:
           - kind: windows
             os: windows-latest
             platform: win
+          - kind: mac
+            os: macos-15
+            platform: osx
     steps:
       - uses: actions/checkout@v4
 

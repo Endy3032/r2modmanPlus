@@ -245,6 +245,7 @@ export default defineConfig((ctx) => {
                     category: "games",
                     icon: "src/assets/icon",
                     identity: null,
+                    artifactName: "${productName}-${version}-macos-${arch}.${ext}",
                     target: [
                         {
                             target: "dmg",

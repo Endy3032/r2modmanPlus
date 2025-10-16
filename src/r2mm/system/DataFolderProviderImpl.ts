@@ -25,7 +25,7 @@ export class DataFolderProviderImpl extends DataFolderProvider {
         }
 
         if (files.length === 1) {
-            return files[0];
+            return files[0] || null;
         }
 
         // Shouldn't be possible to select multiple folders but someone always finds a way.
@@ -62,6 +62,7 @@ export class DataFolderProviderImpl extends DataFolderProvider {
 
     async writeOverrideFile(folderPath: string): Promise<void> {
         const filePath = path.join(folderPath, this.overrideFile);
+        console.log(filePath)
 
         try {
             await FsProvider.instance.writeFile(filePath, "");

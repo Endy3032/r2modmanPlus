@@ -245,6 +245,8 @@ export default defineConfig((ctx) => {
                     category: "games",
                     icon: "src/assets/icon",
                     identity: null,
+                    hardenedRuntime: false,
+                    gatekeeperAssess: false,
                     artifactName: "${productName}-${version}-macos-${arch}.${ext}",
                     target: [
                         {

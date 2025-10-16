@@ -176,9 +176,9 @@ async function moveToNextScreen() {
                 return router.push({name: 'linux'});
             }
         }
-    } else if (appWindow.getPlatform() === 'darwin') {
-        await ensureWrapperInGameFolder();
-        return router.push({name: 'linux'});
+    // } else if (appWindow.getPlatform() === 'darwin') {
+    //     await ensureWrapperInGameFolder();
+    //     return router.push({name: 'linux'});
     }
     return router.push({name: 'profiles'});
 }

@@ -217,11 +217,27 @@ export default defineConfig((ctx) => {
             builder: {
                 // https://www.electron.build/configuration/configuration
 
-                afterPack: async (context) => {
-                    if (context.electronPlatformName === 'darwin') {
-                        const { cleanupXattr } = await import('./scripts/mac-xattr');
-                        await cleanupXattr(context);
-                    }
+                dmg: {
+                    contents: [
+                        {
+                            x: 130,
+                            y: 220,
+                            type: "file",
+                        },
+                        {
+                            x: 410,
+                            y: 220,
+                            type: "link",
+                            path: "/Applications",
+                        },
+                        {
+                            x: 270,
+                            y: 100,
+                            type: "file",
+                            path: "scripts/mac-launch-fix.command",
+                            name: "Fix Launch Error.command"
+                        }
+                    ],
                 },
 
                 appId: 'ebkr-r2modman',
@@ -256,10 +272,10 @@ export default defineConfig((ctx) => {
                     gatekeeperAssess: false,
                     artifactName: "${productName}-${version}-macos-${arch}.${ext}",
                     target: [
-                        // {
-                        //     target: "dmg",
-                        //     arch: "x64"
-                        // },
+                        {
+                            target: "dmg",
+                            arch: "x64"
+                        },
                         {
                             target: "dmg",
                             arch: "arm64"

@@ -4,12 +4,26 @@
             <aside class="menu">
                 <div>
                     <p class="menu-label">{{ activeGame.displayName }}</p>
-                    <ul class="menu-list">
+                    <ul class="menu-list" v-if="(activeGame.exeName.find(exe => exe.endsWith('.app')) && appWindow.getPlatform() === 'darwin') || appWindow.getPlatform() !== 'darwin'">
                         <li>
                             <a href="#" @click="launchGame(LaunchMode.MODDED)"><i class="fas fa-play-circle icon--margin-right"/>Start modded</a>
                         </li>
                         <li>
                             <a href="#" @click="launchGame(LaunchMode.VANILLA)"><i class="far fa-play-circle icon--margin-right"/>Start vanilla</a>
+                        </li>
+                        <li class="mac-warning" v-if="appWindow.getPlatform() === 'darwin'">
+                            Game may not launch correctly<br/>
+                            on macOS at the moment.
+                        </li>
+                    </ul>
+                    <ul class="menu-list" v-else>
+                        <li class="mac-warning">
+                            Cannot launch Windows game<br/>
+                            from macOS directly.
+                        </li>
+                        <li class="mac-warning">
+                            Please use a compatibility layer<br/>
+                            such as Wine or CrossOver.
                         </li>
                     </ul>
                     <p class="menu-label">Mods</p>
@@ -90,6 +104,7 @@ import { ref, computed, onMounted, getCurrentInstance } from 'vue';
 import { getStore } from '../../providers/generic/store/StoreProvider';
 import { State } from '../../store';
 import VueRouter, { useRouter } from 'vue-router';
+import appWindow from '../../providers/node/app/app_window';
 import ProtocolProvider from '../../providers/generic/protocol/ProtocolProvider';
 
 const store = getStore<State>();
@@ -137,6 +152,12 @@ async function launchGame(mode: LaunchMode) {
 
 .menu-list a a {
     padding: 0;
+}
+
+.menu-list .mac-warning {
+    padding: 0.25em 0;
+    color: var(--v2-warning-background-color);
+    font-size: 0.9rem;
 }
 
 .menu {

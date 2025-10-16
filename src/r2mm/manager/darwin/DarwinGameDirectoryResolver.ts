@@ -35,7 +35,8 @@ export default class DarwinGameDirectoryResolver extends GameDirectoryResolverPr
     }
 
     async getSteamDirectory(): Promise<string | R2Error> {
-        const steamPath = path.resolve(os.homedir(), 'Library', 'Application Support', 'Steam');
+        // path.resolve doesnt work correctly here for some reason
+        const steamPath = path.join(os.homedir(), 'Library', 'Application Support', 'Steam');
         if (await FsProvider.instance.exists(steamPath)) {
             return steamPath;
         }

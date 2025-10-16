@@ -11,12 +11,12 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - kind: linux
-            os: ubuntu-latest
-            platform: linux
-          - kind: windows
-            os: windows-latest
-            platform: win
+          # - kind: linux
+          #   os: ubuntu-latest
+          #   platform: linux
+          # - kind: windows
+          #   os: windows-latest
+          #   platform: win
           - kind: mac
             os: macos-15
             platform: osx

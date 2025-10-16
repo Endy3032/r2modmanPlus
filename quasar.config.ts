@@ -217,6 +217,13 @@ export default defineConfig((ctx) => {
             builder: {
                 // https://www.electron.build/configuration/configuration
 
+                afterPack: async (context) => {
+                    if (context.electronPlatformName === 'darwin') {
+                        const { cleanupXattr } = await import('./scripts/mac-xattr');
+                        await cleanupXattr(context);
+                    }
+                },
+
                 appId: 'ebkr-r2modman',
                 win: {
                     target: ['nsis', 'portable'],
@@ -249,10 +256,10 @@ export default defineConfig((ctx) => {
                     gatekeeperAssess: false,
                     artifactName: "${productName}-${version}-macos-${arch}.${ext}",
                     target: [
-                        {
-                            target: "dmg",
-                            arch: "x64"
-                        },
+                        // {
+                        //     target: "dmg",
+                        //     arch: "x64"
+                        // },
                         {
                             target: "dmg",
                             arch: "arm64"

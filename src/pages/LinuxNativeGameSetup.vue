@@ -3,8 +3,12 @@
 		<Hero :title="`Getting started on ${platformName}`" subtitle="Let's configure the game properly" heroType="warning" />
 		<br/>
 		<div class="container">
-			To be able to launch {{ activeGame }} on ${platformName}, you must first setup your Steam launch options correctly.<br/>
+			To be able to launch {{ activeGame }} on {{ platformName }}, you must first setup your Steam launch options correctly.<br/>
 			This needs to be done because of how the BepInEx injection works on Unix systems.<br/>
+            <br/>
+            <span v-if="appWindow.getPlatform() === 'darwin'">
+                If you are just managing mods for the game to run in CrossOver, skip this step.
+            </span><br/>
 			<br/>
 			Please copy and paste the following to your {{ activeGame }} launch options:<br/>
 			<code id="copyableArgs">{{ ComputedWrapperLaunchArguments }}</code>

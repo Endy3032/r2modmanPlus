@@ -11,10 +11,6 @@
                         <li>
                             <a href="#" @click="launchGame(LaunchMode.VANILLA)"><i class="far fa-play-circle icon--margin-right"/>Start vanilla</a>
                         </li>
-                        <li class="mac-warning" v-if="appWindow.getPlatform() === 'darwin'">
-                            Game may not launch correctly<br/>
-                            on macOS at the moment.
-                        </li>
                     </ul>
                     <ul class="menu-list" v-else>
                         <li class="mac-warning">

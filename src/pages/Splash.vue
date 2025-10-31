@@ -166,8 +166,8 @@ function checkForUpdates() {
 }
 
 async function moveToNextScreen() {
+    const activeGame: Game = store.state.activeGame;
     if (appWindow.getPlatform() === 'linux') {
-        const activeGame: Game = store.state.activeGame;
         const settings = await ManagerSettings.getSingleton(activeGame);
         if (!(await getDeterminedLaunchType(activeGame, settings.getLaunchType() || LaunchType.AUTO) === LaunchType.PROTON)) {
             console.log('Not proton game');
@@ -176,9 +176,12 @@ async function moveToNextScreen() {
                 return router.push({name: 'linux'});
             }
         }
-    // } else if (appWindow.getPlatform() === 'darwin') {
-    //     await ensureWrapperInGameFolder();
-    //     return router.push({name: 'linux'});
+    } else if (appWindow.getPlatform() === 'darwin') {
+        await ensureWrapperInGameFolder();
+        if (activeGame.exeName.find(exe => exe.endsWith('.app'))) {
+            console.log('macOS .app game detected, moving to linux setup');
+            return router.push({name: 'linux'});
+        }
     }
     return router.push({name: 'profiles'});
 }

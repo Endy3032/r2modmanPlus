@@ -274,12 +274,12 @@ export default defineConfig((ctx) => {
                     target: [
                         {
                             target: "dmg",
-                            arch: "x64"
+                            arch: "universal"
                         },
                         {
-                            target: "dmg",
-                            arch: "arm64"
-                        },
+                            target: "zip",
+                            arch: "universal"
+                        }
                     ]
                 }
             },

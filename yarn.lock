@@ -4818,16 +4818,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"electron@npm:^38.1.2":
-  version: 38.1.2
-  resolution: "electron@npm:38.1.2"
+"electron@npm:^38.2.0":
+  version: 38.7.1
+  resolution: "electron@npm:38.7.1"
   dependencies:
     "@electron/get": "npm:^2.0.0"
     "@types/node": "npm:^22.7.7"
     extract-zip: "npm:^2.0.1"
   bin:
     electron: cli.js
-  checksum: 10c0/63f768e8ac396221db17c280e483ac838067e881ee61eb78c5c8f587017e51c587cc1eb687f29672b5e63c0af8a5d818d721d49aef20bac082544a8cf2d323ea
+  checksum: 10c0/ef5471b046c34c24cddc97f3dab5d67ef06fef051cc61f1676a6b2e160dc84154cc59572931335bcbaae57d254989e671925eff32a34a11c781a058ccba6e2dd
   languageName: node
   linkType: hard
 
@@ -8769,7 +8769,7 @@ __metadata:
     devtron: "npm:^1.4.0"
     dexie: "npm:^3.2.7"
     dot-prop: "npm:^5.2.0"
-    electron: "npm:^38.1.2"
+    electron: "npm:^38.2.0"
     electron-builder: "npm:^24.10.5"
     electron-debug: "npm:^3.0.1"
     electron-devtools-installer: "npm:^3.0.0"

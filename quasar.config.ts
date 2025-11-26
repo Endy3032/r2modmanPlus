@@ -272,10 +272,10 @@ export default defineConfig((ctx) => {
                     gatekeeperAssess: false,
                     artifactName: "${productName}-${version}-macos-${arch}.${ext}",
                     target: [
-                        {
-                            target: "dmg",
-                            arch: "x64"
-                        },
+                        // {
+                        //     target: "dmg",
+                        //     arch: "x64"
+                        // },
                         {
                             target: "dmg",
                             arch: "arm64"
